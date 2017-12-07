@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	#to{
+	width:25%;
+	margin:auto;
+	}
+	.edit{
+	float:right;
+	display:none;
+	height:100%;
+	}
+	.inp{
+	margin:auto;
+	width:100%
+	}
+	.children{
+	width:100%;
+	background-color:lightblue;
+	color:white;
+	}
+	.cross{
+        float: right;
+	display: none;
+	background-color:red;
+	color:white;
+	width:10%;
+	text-align:center;
+	
+	}
+	.children:hover .cross{
+	display: inline-block;
+	}
+	.children:hover .edit{
+	display: inline-block;
+	}
+    .lineth{
+    text-decoration: line-through;
+    }
+	@media only screen and (max-width: 600px){
+	#to{width:100%;}
+}
+</style>
+</head>
+<body>
+<div id="to">
+		<input name="list" autocomplete="off" type="text" class="inp" id="inpp" placeholder="Add task and press enter..."></input>
+
+</div>
+<script>
+var exp= document.getElementById("inpp");
+exp.addEventListener("keyup", function(event){
+ if(event.keyCode===13 || event.which===13){
+    var sp = document.createElement("span");
+    var node = document.createElement("div");
+    var textnode1 = document.createTextNode(document.getElementById("inpp").value);
+    var cros=document.createElement("button");
+    var span=document.createElement("span");
+    var textnode2=document.createTextNode("\u00D7");
+    cros.appendChild(textnode2);
+    span.appendChild(textnode1);
+    node.appendChild(span);
+    cros.setAttribute("class","cross");
+    cros.onclick=function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+    var ed=document.createElement("button");
+    var textnode3=document.createTextNode("\u270E");
+    ed.appendChild(textnode3);
+    node.appendChild(cros);
+    node.appendChild(ed);
+    node.setAttribute("class","children");
+    ed.setAttribute("class","edit");
+    ed.onclick=function(){
+      var div = this.parentElement;
+      div.style.display = "none";
+      var text= div.firstChild.innerHTML;
+      document.getElementById("inpp").value=text;
+    }
+    node.addEventListener("click",function(e){e.target.classList.toggle("lineth");},true);
+    document.getElementById("to").appendChild(node);
+    document.getElementById("inpp").value="";
+}
+});
+</script>
+</body>
+</html>
