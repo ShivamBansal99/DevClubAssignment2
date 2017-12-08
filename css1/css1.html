@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.top{
+    background-color:red;
+    height:100px;
+}
+.nav{
+    background-color:green;
+    height:10px;
+}
+.left{
+    background-color:blue;
+    width:25%;
+    float:left;
+    height:1000px;
+}
+.right{
+    background-color:lightblue;
+    width:25%;
+    float:left;
+    height:1000px;
+}
+.mid{
+    background-color:yellow;
+    width:50%;
+    height:1000px;
+    float:left;
+}
+@media only screen and (max-width:600px){
+  .left, .right{display:none}
+  .mid{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="top"></div>
+<div class="nav"></div>
+<div class="left"></div>
+<div class="mid"></div>
+<div class="right"></div>
+</body>
+</html>
